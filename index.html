@@ -898,7 +898,7 @@
               <!-- Slide 1 -->
               <div class="carousel-slide active">
                 <img
-                  src="https://images.unsplash.com/photo-1575361204480-aadea25e6e68?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                  src="celebration1.jpg"
                   alt="Season 4 Champions"
                   class="carousel-image"
                 />
@@ -910,7 +910,7 @@
               <!-- Slide 2 -->
               <div class="carousel-slide">
                 <img
-                  src="https://images.unsplash.com/photo-1599058917765-a780eda07a3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                  src="celebration2.jpg"
                   alt="Season 4 Champions 2"
                   class="carousel-image"
                 />
@@ -922,7 +922,7 @@
               <!-- Slide 3 -->
               <div class="carousel-slide">
                 <img
-                  src="https://images.unsplash.com/photo-1522778119026-d647f0596c20?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                src="celebration4.JPG"
                   alt="Season 4 Champions 3"
                   class="carousel-image"
                 />
@@ -955,7 +955,7 @@
               <!-- Slide 1 -->
               <div class="carousel-slide active">
                 <img
-                  src="https://images.unsplash.com/photo-1529900748604-07564a03e7a6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                  src="celebration1.jpg"
                   alt="Team Action"
                   class="carousel-image"
                 />
@@ -967,7 +967,7 @@
               <!-- Slide 2 -->
               <div class="carousel-slide">
                 <img
-                  src="https://images.unsplash.com/photo-1575361204480-aadea25e6e68?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                  src=celebration2.jpg
                   alt="Team Action 2"
                   class="carousel-image"
                 />
@@ -979,7 +979,7 @@
               <!-- Slide 3 -->
               <div class="carousel-slide">
                 <img
-                  src="https://images.unsplash.com/photo-1599058917765-a780eda07a3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                  src=celebration4.JPG
                   alt="Team Action 3"
                   class="carousel-image"
                 />
@@ -1490,7 +1490,29 @@
 
       // Add event listeners for real-time validation
       document.addEventListener('DOMContentLoaded', function() {
+      //form data submit 
         const form = document.getElementById('registrationForm');
+        if (form) {
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const formData = new FormData(this);
+        const successMessage = document.getElementById("successMessage");
+
+        // 🔸 Show success instantly
+        successMessage.classList.remove("d-none");
+        this.reset();
+
+        // 🔸 Send data in background (no delay to user)
+        fetch(
+          "https://script.google.com/macros/s/AKfycbwCNgPZYfM7UwMYZRo0UfrwKXaTopZhUa-ClmkqhMo7ucaTRoA-uzY_1YePZ55R8Pw/exec",
+          {
+            method: "POST",
+            body: formData,
+          }
+        ).catch((error) => console.error("Background submit failed:", error));
+      });
+    }
         const captainInput = form.querySelector('input[name="captain"]');
         const mobileInput = form.querySelector('input[name="mobile"]');
         const aadharInput = form.querySelector('input[name="aadhar"]');
